@@ -11,10 +11,15 @@ import {CheckoutComponent} from './store/checkout/checkout.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule],
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule, StoreModule
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap:
+    [AppComponent]
 })
 
 export class AppModule {
