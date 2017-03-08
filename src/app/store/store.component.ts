@@ -46,4 +46,9 @@ export class StoreComponent {
       .getProducts(this.selectedCategory).length / this.productsPerPage))
       .fill(0).map((x, i) => i + 1);
   }
+
+  get pageCount(): number {
+    return Math.ceil(this.repository
+      .getProducts(this.selectedCategory).length / this.productsPerPage);
+  }
 }
