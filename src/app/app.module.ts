@@ -15,7 +15,13 @@ import {CheckoutComponent} from './store/checkout/checkout.component';
     AppComponent
   ],
   imports: [
-    BrowserModule, StoreModule
+    BrowserModule, StoreModule,
+    RouterModule.forRoot([
+      {path: 'store', component: StoreComponent},
+      {path: 'cart', component: CartDetailComponent},
+      {path: 'checkout', component: CheckoutComponent},
+      {path: '**', redirectTo: '/store'}
+    ])
   ],
   providers: [],
   bootstrap:
