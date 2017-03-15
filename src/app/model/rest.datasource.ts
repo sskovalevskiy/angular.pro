@@ -68,7 +68,7 @@ export class RestDataSource {
 
   private sendRequest(verb: RequestMethod,
                       url: string,
-                      body?: Product | Order, auth: boolean = false): Observable<Product | Product[] | Order | Order[]> {
+                      body?: Product | Order, auth: boolean = false): Observable<any> {
     const request = new Request({
       method: verb,
       url: this.baseUrl + url,
