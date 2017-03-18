@@ -71,3 +71,17 @@
   There are {{getProductCount()}} products.
 </div>
 <ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
+
+<!--13.14 Передача контекстных данных в ngTemplateOutlet с помощью ngTemplateOutletContext-->
+<ng-template #titleTemplate2 let-text="title">
+  <h4 class="p-a-1 bg-success">{{text}}</h4>
+</ng-template>
+<ng-template [ngTemplateOutlet]="titleTemplate2"
+          [ngTemplateOutletContext]="{title: 'Header'}">
+</ng-template>
+<div class="bg-info p-a-1 m-a-1">
+  There are {{getProductCount()}} products.
+</div>
+<ng-template [ngTemplateOutlet]="titleTemplate2"
+          [ngTemplateOutletContext]="{title: 'Footer'}">
+</ng-template>
