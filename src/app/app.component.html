@@ -59,3 +59,15 @@
     <td *ngIf="!last">{{item.price}}</td>
   </tr>
 </table>
+
+<!--13.13 Использование директивы ngTemplateOutlet и тега ng-template для создания повторяющихся элементов-->
+<!--определяем шаблон с контентом, который должен повторяться с использованием директивы.-->
+<ng-template #titleTemplate>
+  <h4 class="p-a-1 bg-success">Repeated Content</h4>
+</ng-template>
+<!--контент вставляется в документ HTML при помощи директивы ngTemplateOutlet-->
+<ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
+<div class="bg-info p-a-1 m-a-1">
+  There are {{getProductCount()}} products.
+</div>
+<ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
