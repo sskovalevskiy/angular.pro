@@ -32,4 +32,8 @@ export class AppComponent {
   getProductCount(): number {
     return this.getProducts().length;
   }
+
+  getKey(index: number, product: Product) {
+    return product.id;
+  }
 }
