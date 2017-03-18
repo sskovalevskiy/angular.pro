@@ -47,9 +47,10 @@
 </table>
 
 <!--13.9 Использование значений first и last директивы *ngFor-->
+<!--13.12 Используем trackBy, позволяющий Angular менять элементы местами при их равенстве-->
 <table class="table table-sm table-bordered m-t-1">
   <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
-  <tr *ngFor="let item of getProducts(); let i = index; let odd = odd; let first = first; let last = last"
+  <tr *ngFor="let item of getProducts(); let i = index; let odd = odd; let first = first; let last = last; trackBy:getKey"
       [class.bg-primary]="odd" [class.bg-info]="!odd"
       [class.bg-warning]="first || last">
     <td>{{i + 1}}</td>
