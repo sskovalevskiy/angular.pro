@@ -9,6 +9,7 @@ import {Product} from './product.model';
 })
 export class AppComponent {
   model: Model = new Model();
+  selectedProduct: string;
 
   getProduct(key: number): Product {
     return this.model.getProduct(key);
@@ -16,5 +17,9 @@ export class AppComponent {
 
   getProducts(): Product[] {
     return this.model.getProducts();
+  }
+
+  getSelected(product: Product): boolean {
+    return product.name == this.selectedProduct;
   }
 }
