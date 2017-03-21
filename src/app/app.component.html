@@ -1,87 +1,9 @@
-<div class="bg-info p-a-1">
-  There are {{getProductCount()}} products.
-</div>
-
-<!--13.3 Использование директивы *ngIf-->
-<div *ngIf="getProductCount() > 4" class="bg-info p-a-1 m-t-1">
-  There are more than 4 products in the model
-</div>
-<div *ngIf="getProductByPosition(0).name != 'Kayak'" class="bg-info p-a-1 m-t-1">
-  The first product isn't a Kayak
-</div>
-
-<!--13.4 Использование директивы ngSwitch-->
-<div class="bg-info p-a-1 m-t-1" [ngSwitch]="getProductCount()">
-  <span *ngSwitchCase="2">There are two products</span>
-  <span *ngSwitchCase="5">There are five products</span>
-  <span *ngSwitchDefault>This is the default</span>
-</div>
-
-<!--13.5 Использование строковых литералов в директиве *ngSwitchCase-->
-<div class="bg-info p-a-1 m-t-1" [ngSwitch]="getProduct(1).name">
-  <span *ngSwitchCase="targetName">Kayak</span>
-  <span *ngSwitchCase="'Lifejacket'">Lifejacket</span>
-  <span *ngSwitchDefault>Other Product</span>
-</div>
-
-<!--13.6 Использование директивы *ngFor-->
-<table class="table table-sm table-bordered m-t-1">
-  <tr><th>Name</th><th>Category</th><th>Price</th></tr>
-  <tr *ngFor="let item of getProducts()">
-    <td>{{item.name}}</td>
-    <td>{{item.category}}</td>
-    <td>{{item.price}}</td>
-  </tr>
-</table>
-
-<!--13.7-13.8 Использование значений index и odd директивы *ngFor-->
 <table class="table table-sm table-bordered m-t-1">
   <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
-  <tr *ngFor="let item of getProducts(); let i = index; let odd = odd"
-      [class.bg-primary]="odd" [class.bg-info]="!odd">
-    <td>{{i +1}}</td>
-    <td>{{item.name}}</td>
-    <td>{{item.category}}</td>
-    <td>{{item.price}}</td>
-  </tr>
-</table>
-
-<!--13.9 Использование значений first и last директивы *ngFor-->
-<!--13.12 Используем trackBy, позволяющий Angular менять элементы местами при их равенстве-->
-<table class="table table-sm table-bordered m-t-1">
-  <tr><th></th><th>Name</th><th>Category</th><th>Price</th></tr>
-  <tr *ngFor="let item of getProducts(); let i = index; let odd = odd; let first = first; let last = last; trackBy:getKey"
-      [class.bg-primary]="odd" [class.bg-info]="!odd"
-      [class.bg-warning]="first || last">
+  <tr *ngFor="let item of getProducts(); let i = index">
     <td>{{i + 1}}</td>
     <td>{{item.name}}</td>
     <td>{{item.category}}</td>
-    <td *ngIf="!last">{{item.price}}</td>
+    <td>{{item.price}}</td>
   </tr>
 </table>
-
-<!--13.13 Использование директивы ngTemplateOutlet и тега ng-template для создания повторяющихся элементов-->
-<!--определяем шаблон с контентом, который должен повторяться с использованием директивы.-->
-<ng-template #titleTemplate>
-  <h4 class="p-a-1 bg-success">Repeated Content</h4>
-</ng-template>
-<!--контент вставляется в документ HTML при помощи директивы ngTemplateOutlet-->
-<ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
-<div class="bg-info p-a-1 m-a-1">
-  There are {{getProductCount()}} products.
-</div>
-<ng-template [ngTemplateOutlet]="titleTemplate"></ng-template>
-
-<!--13.14 Передача контекстных данных в ngTemplateOutlet с помощью ngTemplateOutletContext-->
-<ng-template #titleTemplate2 let-text="title">
-  <h4 class="p-a-1 bg-success">{{text}}</h4>
-</ng-template>
-<ng-template [ngTemplateOutlet]="titleTemplate2"
-          [ngTemplateOutletContext]="{title: 'Header'}">
-</ng-template>
-<div class="bg-info p-a-1 m-a-1">
-  There are {{getProductCount()}} products.
-</div>
-<ng-template [ngTemplateOutlet]="titleTemplate2"
-          [ngTemplateOutletContext]="{title: 'Footer'}">
-</ng-template>
