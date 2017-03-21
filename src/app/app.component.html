@@ -10,3 +10,8 @@
     <td>{{item.price}}</td>
   </tr>
 </table>
+<!--14.9 Используем объект события $event для передачи значения его свойства в компонент-->
+<div class="form-group">
+  <label>Product Name</label>
+  <input class="form-control" (input)="selectedProduct=$event.target.value" />
+</div>
