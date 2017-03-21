@@ -27,5 +27,9 @@
 <div class="form-group">
   <label>Product Name</label>
   <input #product class="form-control" (input)="false"/>
+  <!--Привязка реагирует на нажатие любой клавиши:-->
+  <input #product2 class="form-control" (keyup)="selectedProduct=product2.value"/>
+  <!--Можно более точно указать нужную клавишу, указав ее имя в составе привязки события-->
+  <input #product3 class="form-control" (keyup.enter)="selectedProduct=product3.value"/>
 </div>
 
